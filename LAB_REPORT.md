@@ -1,48 +1,58 @@
 # Lab Report, Code Quality and Design Quality
 
-Repository URL:
+Repository URL: https://github.com/Yumon-lab/itcs382-lab/tree/main
 
 ## Tools
 
 | Item | Version or name |
 | --- | --- |
-| JDK | |
-| Maven | |
-| IDE | |
-| SonarQube for IDE | |
+| JDK | openjdk version "25.0.4.1" 2026-08-18 LTS | 
+| Maven | ache Maven 3.10.0|
+| IDE | 1.143.1 |
+| SonarQube for IDE | 6.2.0 |
 | AI tool and exact model | |
 
 ## Task 1. SonarQube on the starter code
 
-Commit of the starter, before any change:865e04c test
+Commit of the starter, before any change:865e04c
 
 Table 1. SonarQube issues in the starter code
 
 | No. | Rule | File:line | Message |
 | --- | --- | --- | --- |
-| 1 | | | |
+|1| S2143| ParcelService.java: Ln 1, Col 0| Use the "java.time" API for date and time|
+|2| S1128| ParcelService.java: Ln 6, Col 7| Remove this unused import 'java.util.Date'|
+|3| S1068| ParcelService.java: Ln 12, Col 16| Remove this unused "maxParcels" private field.|
+|4| S4973| ParcelService.java: Ln 42, Col 51| Strings and Boxed types should be compared using "equals()"|
+|5| S2095| ParcelService.java: Ln 76, Col 32| Use try-with-resoruces or close this "FileWriter" in a "finally" clause.|
+|6| S108| ParcelService.java: Ln 80, Col 32| Remove this block of code, fill it in, or add a comment explaining why it is empty.| 
 
 ## Task 2. AI review of the starter code
 
 | Item | Value |
 | --- | --- |
-| Date | |
-| AI tool and exact model | |
-| Commit reviewed | |
-| How the AI read the files (attached the files, opened the folder, or pasted the files) | |
-| Output file in the reviews folder | |
+| Date | 25th October 2026 |
+| AI tool and exact model | ChatGPT, GPT-6 model|
+| Commit reviewed | I mostly test on how to successfully commit file to redirectory in Github|
+| How the AI read the files (attached the files, opened the folder, or pasted the files) | Pasted the files as text |
+| Output file in the reviews folder | parcelpoint-review.md|
 
 Table 2. All findings on the starter code
 
 | No. | File:line | Finding | Found by (SonarQube, AI or both) | SonarQube rule or course term | Correct? (yes or no, and why) |
 | --- | --- | --- | --- | --- | --- |
-| 1 | | | | | |
+| 1 | ParcelService.java: line 42 | string compare should be equals() | Found by SonarQube and ChatGPT | S4973 | Correct because == is used for comparing value and not locations in memory|
+|2| Main.java: line 10| Input is split on a single space | Found by chatGPT | Code quality| yes, the danger is a case where there are multiple space in string leading to incorrect parsing|
+|3| ParcelService.java: line 76| Resources should be close | Found by SonarQube | S2095| yes, due to danger of result leak from improper closing|
+|4| ParcelService.java: line 1| Java.time API for date and time| Found by SonarQube | S2143| yes, it is much more suitable for dates and times|
+|5| Parcel.java:9| status is a non-private field, contrary to the expected encapsulation of object state.| Found by ChatGPT| Encapsulation| No, this status variable is used locally, making it private will make other class unable to use it
 
 2.1 Name two problems that only the AI review found.
-
+Problem 2,5
 2.2 Name one problem that only SonarQube found, or write none.
-
+Problem 3,4
 2.3 Name one AI finding that was wrong or too vague, and explain why. If every finding was right, explain how you checked them.
+Problem 5, as said before, the variable status must be public so other can use it
 
 ## Task 3. Fix and check
 

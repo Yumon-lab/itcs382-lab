@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ParcelService service = new ParcelService();
-        Scanner in = new Scanner(System.in);
+        try (Scanner in = new Scanner(System.in)){
+        
         System.out.println("Commands: store <code> <studentId> <size 1-3>, pickup <code> <days>, list, staff, quit");
         while (in.hasNextLine()) {
             String[] words = in.nextLine().trim().split(" ");
@@ -25,4 +26,5 @@ public class Main {
             }
         }
     }
+ }
 }

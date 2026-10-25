@@ -60,21 +60,26 @@ Table 3. What you did with each SonarQube issue in Table 1
 
 | No. in Table 1 | Fixed or kept | Commit, or the reason for keeping it |
 | --- | --- | --- |
-| 1 | | |
+| 1 | Fixed| I remove it as it wans't used at all|
+| 2 | Fixed| it was removed because it doesn't do much|
+| 3 | Fixed| it was removed as maxparcel barely do anything|
+| 4 | Fixed| == is replace with .equals() for string comparison|
+| 5 | Fixed| it is replace with try and catch error to successfully close this type writer with no more complexity
+| 6 | kept| it suddenly disappear while fixing the code|
 
-Number of SonarQube issues that remain after your fixes:
+Number of SonarQube issues that remain after your fixes: 0
 
 The two design problems that you fixed
 
 | Design problem (course term) | What you changed | Commit |
 | --- | --- | --- |
-| | | |
+| Interface Segregation |  | commit |
 | | | |
 
 Output of the program after your fixes, for the commands `store P1 6501 2`, `pickup P1 5` and `staff`, and the content of parcels.csv:
 
 ```text
-
+P1,PICKED_UP
 ```
 
 ## Task 4. AI-generated poor and good designs
@@ -101,13 +106,13 @@ Output of the program after your fixes, for the commands `store P1 6501 2`, `pic
 ## Task 5. Reflection
 
 5.1 What does SonarQube check, and what does it not check? Answer with examples from this lab.
-
+It checks the quality of code but it does not alway check the problem that can come when implementing such as using java.time and it leads to more problem that it must be deleted.
 5.2 When should you not trust the AI review? Give an example from this lab.
-
+When you actually do what it said and it failed in practice as seen in changing status variable to private in parcel.java 
 5.3 What will you do differently in Project Phase 2 after this lab?
-
+I will say I will trust SonarQube as code checker and I will consult AI as quality assurance to have the best outcome for my project phase 2.
 ## AI usage declaration
 
 | AI tool and exact model | Purpose | Files or parts that it produced or changed | How you checked its output |
 | --- | --- | --- | --- |
-| | | | |
+|ChatGPT GPT-6|Code check in according to Part D and E| ParcelService.java| by follow the instruction of Part E task 3|
